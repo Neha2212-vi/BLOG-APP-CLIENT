@@ -18,7 +18,7 @@ const Blog = ()=> {
     const addBlog = ()=> {
         try {
             if(title && description && img){
-                axios.post("http://localhost:5000/blogs", formData)
+                axios.post("https://blog-app-s1uo.onrender.com/blogs", formData)
                 .then((res)=>{
                     console.log(res);
                     naviagte("/");

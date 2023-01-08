@@ -22,7 +22,7 @@ const NavBar = ({data}) => {
             </ul>
         </div>
         <div>
-            {console.log(data)}
+            {/* {console.log(data)} */}
             {data.map((ele, i)=>
                 <div className="display" key={i}>
                     <div className="title">{ele.title}</div>
