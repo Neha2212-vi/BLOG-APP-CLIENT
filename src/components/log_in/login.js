@@ -21,7 +21,7 @@ const LogIn = () => {
     const Blog_login = async (e) => {
         e.preventDefault();
         try {
-            const url = "http://localhost:5000/login";
+            const url = "https://blog-app-s1uo.onrender.com/login";
             const { login: res } = await axios.post(url, login);
             localStorage.setItem("token", login.data);
             localStorage.setItem("name", login.name)

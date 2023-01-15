@@ -22,7 +22,7 @@ const SignUp = () => {
     const register = async (e) => {
         e.preventDefault();
         try {
-            const url = "http://localhost:5000/signup";
+            const url = "https://blog-app-s1uo.onrender.com/signup";
             const { data: res } = await axios.post(url, data);
             naviagte("/login");
             // console.log(res.message);
