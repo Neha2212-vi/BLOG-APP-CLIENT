@@ -23,6 +23,8 @@ const Blog = ()=> {
                     console.log(res);
                     naviagte("/");
                 })
+            }else{
+                alert("All fields are mandatory")
             }
         } catch (error) {
             console.log(error);
