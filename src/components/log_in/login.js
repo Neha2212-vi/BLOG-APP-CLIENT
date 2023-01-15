@@ -21,14 +21,15 @@ const LogIn = () => {
     const Blog_login = async (e) => {
         e.preventDefault();
         try {
-            const url = "https://blog-app-s1uo.onrender.com/login";
+            const url = "http://localhost:5000/login";
             const { login: res } = await axios.post(url, login);
             localStorage.setItem("token", login.data);
             localStorage.setItem("name", login.name)
             window.location = "/"
         } catch (error) {
-            if (error.response && error.response.status >= 400 && error.response.status <= 500) {
-                setError(error.data.response.message)
+            // console.log(error);
+            if (error.response && error.response.request.status >= 400 && error.response.status <= 500) {
+                setError(error.response.data.message)
             }
         }
 
@@ -55,10 +56,9 @@ const LogIn = () => {
                 value={login.password}
                 onChange={handleChnage}
             />
-            {error && <div>{error}</div>}
+            {error && <div className="error">{error}</div>}
             <button type="Submit" className="btn" onClick={Blog_login}>LOGIN</button>
 
-            <div className="forgot">Forgot Password?</div>
             <div className="alt">Need an account?<span> </span><a href="/signup">SIGN UP</a></div>
         </div>
     )

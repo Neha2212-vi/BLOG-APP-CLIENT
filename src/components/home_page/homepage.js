@@ -6,7 +6,7 @@ const HomePage = ()=> {
     const [state, setState] = useState([]);
     useEffect(()=>{
         const blog = ()=> {
-            axios.get("https://blog-app-s1uo.onrender.com/blogs")
+            axios.get("http://localhost:5000/blogs")
             .then((res)=>{
                 setState(res.data)
                 // console.log(res.data)

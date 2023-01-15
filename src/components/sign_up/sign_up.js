@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
     const naviagte = useNavigate("")
-    const [signup, setSignUp] = useState({
+    const [data, setData] = useState({
         email: "",
         password: "",
         confirmPassword: ""
@@ -14,26 +14,28 @@ const SignUp = () => {
 
     const handleChnage = (e) => {
         const { name, value } = e.target;
-        setSignUp({
-            ...signup,
+        setData({
+            ...data,
             [name]: value
         })
     };
     const register = async (e) => {
         e.preventDefault();
         try {
-            const url = "https://blog-app-s1uo.onrender.com/signup";
-            const {signup : res} = await axios.post(url, signup);
+            const url = "http://localhost:5000/signup";
+            const { data: res } = await axios.post(url, data);
             naviagte("/login");
             // console.log(res.message);
         } catch (error) {
-            if(error.response && error.response.status >= 400 && error.response.status <= 500 ){
-                setError(error.data.response.message)
+            console.log(error);
+            if (error.response &&
+                error.response.status >= 400 &&
+                error.response.status <= 500
+            ) {
+                setError(error.response.data.message)
             }
         }
-       
     };
-
     return (
         <div className="signUp">
             <label htmlFor="email" className="email">Email</label>
@@ -41,7 +43,7 @@ const SignUp = () => {
                 type="email"
                 id="email"
                 name="email"
-                value={signup.email}
+                value={data.email}
                 onChange={handleChnage} />
 
             <label htmlFor="password" className="password">Password</label>
@@ -49,7 +51,7 @@ const SignUp = () => {
                 type="password"
                 id="password"
                 name="password"
-                value={signup.password}
+                value={data.password}
                 onChange={handleChnage} />
 
             <label htmlFor="CP" className="CP" >Confirm Password</label>
@@ -57,10 +59,10 @@ const SignUp = () => {
                 type="password"
                 id="CP"
                 name="confirmPassword"
-                value={signup.confirmPassword}
+                value={data.confirmPassword}
                 onChange={handleChnage} />
 
-            {error && <div>{error}</div>}
+            {error && <div className="error">{error}</div>}
 
             <button className="btn" onClick={register}>SIGN UP</button>
         </div>
