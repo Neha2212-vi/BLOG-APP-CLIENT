@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./login.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
 
 const LogIn = () => {
@@ -59,7 +60,7 @@ const LogIn = () => {
             {error && <div className="error">{error}</div>}
             <button type="Submit" className="btn" onClick={Blog_login}>LOGIN</button>
 
-            <div className="alt">Need an account?<span> </span><a href="/signup">SIGN UP</a></div>
+            <div className="alt">Need an account?<span> </span><Link to="/signup">SIGN UP</Link></div>
         </div>
     )
 }
